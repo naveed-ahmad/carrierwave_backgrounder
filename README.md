@@ -113,6 +113,17 @@ This must be set before you assign an upload:
 @user.attributes = params[:user]
 ```
 
+## Sidekiq 
+Custom queue should be defined inside the Sidekiq configuration otherwise jobs won't be processed:
+
+config/sidekiq.yml
+
+```yml
+:queues:
+  - [awesome_queue, 1]
+  - default
+```  
+
 ### Override worker
 To override the worker in cases where additional methods need to be called or you have app specific requirements, pass the worker class as the
 second argument:
